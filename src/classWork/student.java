@@ -20,13 +20,4 @@ public class student {
         return age;
     }
 
-
-    public static void main(String[] args) {
-        student st = new student();
-        st.setName("Ivan");
-        st.setAge(17);
-        System.out.println(st.getName());
-        System.out.println(st.getAge());
-    };
-
 }

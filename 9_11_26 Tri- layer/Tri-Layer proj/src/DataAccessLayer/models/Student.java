@@ -11,10 +11,10 @@ public class Student {
         this.surname=surname;
         this.age=age;
     }
-    void loanBook(Book book){
+    public void loanBook(Book book){
         loanedBooks++;
     }
-    void returnBook(Book book){
+    public void returnBook(Book book){
         loanedBooks--;
     }
 }

@@ -1,24 +1,13 @@
 package PresentationLayer;
 
 import BusinessLogicLayer.BookService;
+import BusinessLogicLayer.LoanService;
 import DataAccessLayer.models.Student;
 
 import java.util.Scanner;
 
 public class LibraryMenu {
 
-    static void Login(){
-        Scanner scn = new Scanner(System.in);
-
-        System.out.println("Welcome to Library Menu, please enter your information to log in");
-        System.out.println("Name:");
-        String name = scn.nextLine();
-        System.out.println("Last name:");
-        String lastName = scn.nextLine();
-        System.out.println("Age:");
-        int age = scn.nextInt();
-
-    }
     static void Menu(){
         System.out.println("===== LIBRARY MANAGMENT SYSTEM =====");
         System.out.println("1. Add Book");
@@ -32,6 +21,7 @@ public class LibraryMenu {
         System.out.println("0. Exit");
         System.out.println("Choose option: ");
         BookService bookService = new BookService();
+        LoanService loanService = new LoanService();
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
         switch(choice){
@@ -46,27 +36,32 @@ public class LibraryMenu {
                 break;
                 }
             case 3:{
-
+                bookService.searchBook();
                 Menu();
                 break;
                 }
             case 4:{
+                bookService.editBook();
                 Menu();
             break;
         }
         case 5:{
+            bookService.deleteBook();
             Menu();
             break;
         }
         case 6:{
+            loanService.addLoan();
             Menu();
             break;
         }
         case 7:{
+            loanService.removeLoan();
             Menu();
             break;
         }
         case 8:{
+            bookService.showAvailableBooks();
             Menu();
             break;
         }

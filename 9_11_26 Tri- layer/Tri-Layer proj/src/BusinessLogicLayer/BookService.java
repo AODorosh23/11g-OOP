@@ -43,17 +43,24 @@ public class BookService {
     public void deleteBook() {
         System.out.println("Enter title: ");
         String title = scn.nextLine();
-        BookRepository.removeBook(findBook(title));
-        System.out.println("Book with title: " + title + " has been deleted");
+        if(findBook(title) != null) {
+            BookRepository.removeBook(findBook(title));
+            System.out.println("Book with title: " + title + " has been deleted");
+        }else {
+            System.out.println("Book with title: " + title + " not found, please try again");
+        }
     }
     public void showBooks(){
         for(Book book : BookRepository.books){
-            System.out.println(book.title + " " + book.author + " " + book.year + " " + book.isbn);
+            System.out.println(book.title + " |~| Author: " + book.author + " |~| Year: " + book.year + " |~| ISBN: " + book.isbn);
         }
     }
     public boolean isAvailableBook(Book bk){
+        if (bk == null) {
+            return false;
+        }
         for(Book book : BookRepository.availableBooks){
-            if(book.isbn.equals(book.isbn)){
+            if(book.isbn.equals(bk.isbn)){
                 return true;
             }
         }
@@ -61,7 +68,7 @@ public class BookService {
     }
     public void showAvailableBooks(){
         for(Book book : BookRepository.availableBooks){
-            System.out.println(book.title + " " + book.author + " " + book.year + " " + book.isbn);
+            System.out.println(book.title + " |~| Author: " + book.author + " |~| Year: " + book.year + " |~| ISBN: " + book.isbn);
         }
     }
     public void searchBook(){
